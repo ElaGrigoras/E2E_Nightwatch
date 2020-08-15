@@ -4,15 +4,28 @@
 const { client } = require('nightwatch-api')
 
 const homePage = {
-  elements: {
-    searchInput: '#search-box-input',
+  elements: {},
+  sections: {
+    searchSection: {
+      name: 'Search Section',
+      selector: 'div.search-box.onedotcom-page-search.section',
+      elements: {
+        searchInput: '#search-box-input',
+        searchIcon: '.search-box-icon',
+      },
+    },
   },
   commands: {
     searchBy: function (searchTerm) {
-      client.waitForElementVisible(homePage.elements.searchInput)
-      client.click(homePage.elements.searchInput)
-      // click.setValue(homePage.elements.searchInput, searchTerm)
-      return client
+      client.waitForElementVisible(
+        homePage.sections.searchSection.elements.searchInput
+      )
+      client.click(homePage.sections.searchSection.elements.searchInput)
+      client.setValue(
+        homePage.sections.searchSection.elements.searchInput,
+        searchTerm
+      )
+      return client.click(homePage.sections.searchSection.elements.searchIcon)
     },
   },
 }
