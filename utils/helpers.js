@@ -11,3 +11,8 @@ async function asyncGetValue(selector) {
     browser.getValue(selector, (result) => resolve(result.value))
   })
 }
+
+module.exports = {
+  asyncGetText,
+  asyncGetValue,
+}
