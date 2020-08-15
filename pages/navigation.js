@@ -6,14 +6,9 @@ const siteNavigationPage = {
     return this.api.launchUrl
   },
   elements: {},
-  commands: {
-    navToMainPage: function () {
-      return this.navigate()
-    },
-  },
+  commands: {},
 }
 module.exports = {
-  url: siteNavigationPage.url,
   elements: siteNavigationPage.elements,
   // section: siteNavigationPage.sections,
   commands: siteNavigationPage.commands,

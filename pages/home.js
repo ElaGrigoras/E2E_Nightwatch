@@ -18,8 +18,16 @@ const homePage = {
       elements: {
         searchResultsBox: 'div.st-results-container > p',
         maxResultsPerPage: 'div.st-results-container > p strong:nth-child(2)',
+        currentPage: '.pagination__page.isActive',
         nextBtn: '.pagination__btn.hasArrow.arrowRight',
         articleBox: 'div.st-results-container > article',
+      },
+    },
+    footer: {
+      name: 'Footer',
+      selector: '',
+      elements: {
+        accesptCookiePolicyBtn: '#cookie-notification-policy-accept-continue',
       },
     },
   },
@@ -35,12 +43,27 @@ const homePage = {
       )
       return client.click(homePage.sections.searchSection.elements.searchIcon)
     },
-    getNumberOfSearchResults: async function () {
-      /*const maxNumberOfResultsDisplayed = await helpers.asyncGetText.call(
+    verifyCurrentPageNumber: async function (currentPageNumber) {
+      const currentPageNumberDisplayed = await helpers.asyncGetText.call(
+        client,
+        homePage.sections.searchResultsSection.elements.currentPage
+      )
+      client.assert.equal(currentPageNumberDisplayed, currentPageNumber)
+    },
+    verifyNumberOfSearchResults: async function () {
+      const maxNumberOfResultsDisplayed = await helpers.asyncGetText.call(
         client,
         homePage.sections.searchResultsSection.elements.maxResultsPerPage
       )
-      client.assert.equal(maxNumberOfResultsDisplayed, '10')*/
+      client.assert.equal(maxNumberOfResultsDisplayed, '10')
+    },
+
+    goToNextPage: async function () {
+      client.click(homePage.sections.searchResultsSection.elements.nextBtn)
+    },
+
+    accesptCookiePolicy: async function () {
+      client.click(homePage.sections.footer.elements.accesptCookiePolicyBtn)
     },
   },
 }
