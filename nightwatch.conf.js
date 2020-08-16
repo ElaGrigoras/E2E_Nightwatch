@@ -32,4 +32,8 @@ module.exports = {
   globals_path: 'globals.js',
   webdriver: SELENIUM_CONFIGURATION,
   test_settings: ENVIRONMENTS,
+  screenshots: {
+    enabled: true,
+    path: 'screenshots'
+  }
 }
