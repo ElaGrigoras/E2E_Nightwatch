@@ -11,8 +11,14 @@ async function asyncGetValue(selector) {
     browser.getValue(selector, (result) => resolve(result.value))
   })
 }
-
+async function asyncGetAttribute(selector, attribute) {
+  const browser = this
+  return new Promise(function (resolve) {
+    browser.getAttribute(selector, attribute, (result) => resolve(result.value))
+  })
+}
 module.exports = {
   asyncGetText,
   asyncGetValue,
+  asyncGetAttribute,
 }

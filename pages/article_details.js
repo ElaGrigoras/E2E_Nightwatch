@@ -4,7 +4,7 @@ const { client } = require('nightwatch-api')
 const articleDetailsPage = {
   elements: {
     articleHeadline: 'div.ba-hero__content.container .ba-hero__text__headline',
-    articleSubtitle: 'div.ba-hero__content.container .ba-hero__text__body',
+    articleTitle: '.post-header .post-title',
   },
   commands: {},
 }
