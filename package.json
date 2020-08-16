@@ -11,6 +11,7 @@
   "devDependencies": {
     "chromedriver": "^83.0",
     "cucumber": "latest",
+    "cucumber-html-reporter": "^5.2.0",
     "cucumber-pretty": "latest",
     "eslint": "latest",
     "eslint-config-standard": "latest",
