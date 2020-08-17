@@ -2,11 +2,12 @@ const { client } = require('nightwatch-api')
 // const helpers = require('../../utils/helpers')
 
 const siteNavigationPage = {
-  url: function () {
-    return this.api.launchUrl
-  },
   elements: {},
-  commands: {},
+  commands: {
+    navigateToMainPage: function () {
+      return client.url(client.launch_url)
+    },
+  },
 }
 module.exports = {
   elements: siteNavigationPage.elements,

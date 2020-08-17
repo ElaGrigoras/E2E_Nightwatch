@@ -9,7 +9,7 @@ const home = require('../pages/home')
 // const articleIndex = '6'
 
 Given(/^I go to pearson.com main page$/, async () => {
-  return await client.url('https://www.pearson.com/')
+  return await navPage.navigateToMainPage()
 })
 
 Then(/^The search input should be visible$/, async () => {
