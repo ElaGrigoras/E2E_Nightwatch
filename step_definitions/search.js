@@ -22,37 +22,42 @@ Given(/^I search by "(.*)"$/, async (searchTerm) => {
   return await homePage.searchBy(searchTerm)
 })
 
-Then(/^I should see the first page of the search results$/, async () => {
-  await client.assert.visible(homePage.section.searchResultsSection)
-  return await homePage.verifyCurrentPageNumber('1')
+Then(/^I should see the "(.*)" page of the search results$/, async (page) => {
+  switch (page) {
+    case 'first':
+      await client.assert.visible(homePage.section.searchResultsSection)
+      await homePage.verifyCurrentPageNumber('1')
+      break
+    case 'next':
+      await client.assert.visible(homePage.section.searchResultsSection)
+      await homePage.verifyCurrentPageNumber('2')
+      break
+    default:
+      throw new Error(` ${page} page not available.`)
+  }
 })
 
 Then(
   /^The number of results should be at most "(.*)"$/,
   async (maxNumberOfResults) => {
-    // verify the number of Articles Boxes displayed after search
-    let maxNumberOfResultsInt = parseInt(maxNumberOfResults)
-    let searchResultsArticlesCount = await homePage.getNumberOfArticles()
-    client.assert.ok(searchResultsArticlesCount <= maxNumberOfResultsInt)
+    // verify if at most 10 articles boxes are displayed
+    let maxNumberOfResultsAllowed = parseInt(maxNumberOfResults)
+    let searchResultsArticlesCount = await homePage.getNumberOfArticlesDisplayed()
+    client.assert.ok(searchResultsArticlesCount <= maxNumberOfResultsAllowed)
 
-    // verify the max number of search results Text displayed
-    const maxResultsPerPageTextDisplayed = await helpers.asyncGetText.call(
+    // verify if the counter of the page is correct
+    /* const maxResultsPerPageTextDisplayed = await helpers.asyncGetText.call(
       client,
       homePage.section.searchResultsSection.elements.maxResultsPerPage
     )
-    let maxResultsPerPageDisplayed = parseInt(maxResultsPerPageTextDisplayed)
-    let maxNumberOfResultsAllowed = parseInt(maxNumberOfResults)
-    client.assert.ok(maxResultsPerPageDisplayed <= maxNumberOfResultsAllowed)
+    let maxResultsPerPageCounter = parseInt(maxResultsPerPageTextDisplayed)
+    client.assert.ok(maxResultsPerPageCounter <= maxNumberOfResultsAllowed)*/
   }
 )
 
 When(/^I click on Next button$/, async () => {
   await homePage.acceptCookiePolicy()
   return await homePage.goToNextPage()
-})
-
-When(/^I should see the next page displayed$/, async () => {
-  return await homePage.verifyCurrentPageNumber('2')
 })
 
 When(
