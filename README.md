@@ -1,3 +1,3 @@
 # E2E_Nightwatch
 
-<h3> - Open the assignment.pdf file </h3>
+<h3> - Start by opening the assignment.pdf file </h3>
