@@ -77,6 +77,24 @@ const homePage = {
       client.pause(500)
     },
 
+    /*getNumberOfSearchResultsArticles: async function () {
+      const articles = []
+      await client.elements(
+        'css selector',
+        homePage.sections.searchResultsSection.elements.articleBox,
+        function (result) {
+          for (var i in result.value) {
+            this.elementIdAttribute(result.value[i].ELEMENT, 'id', function (
+              result
+            ) {
+              articles.push(result.value)
+            })
+          }
+          console.log(articles.lenght)
+        }
+      )
+    },*/
+
     getArticleInfo: async function (articleNumber) {
       const articleItem = `div.st-results-container > article:nth-child(${articleNumber}) a`
       articleDetails.completeTitle = await helpers.asyncGetText.call(

@@ -34,12 +34,18 @@ Then(
       client,
       homePage.section.searchResultsSection.elements.maxResultsPerPage
     )
-    return client.assert.equal(maxNumberOfResultsDisplayed, maxNumberOfResults)
+    // return client.assert.equal(maxNumberOfResultsDisplayed, maxNumberOfResults)
+    let maxNumberOfResultsDisplayedInt = parseInt(maxNumberOfResultsDisplayed)
+    let maxNumberOfResultsInt = parseInt(maxNumberOfResults)
+    //homePage.getNumberOfSearchResultsArticles()
+    return client.assert.ok(
+      maxNumberOfResultsDisplayedInt <= maxNumberOfResultsInt
+    )
   }
 )
 
 When(/^I click on Next button$/, async () => {
-  await homePage.accesptCookiePolicy()
+  await homePage.acceptCookiePolicy()
   return await homePage.goToNextPage()
 })
 
