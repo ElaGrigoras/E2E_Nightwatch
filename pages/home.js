@@ -77,23 +77,17 @@ const homePage = {
       client.pause(500)
     },
 
-    /*getNumberOfSearchResultsArticles: async function () {
-      const articles = []
-      await client.elements(
+    getNumberOfArticlesDisplayed: async function () {
+      const articleRows = await helpers.asyncElements.call(
+        client,
         'css selector',
-        homePage.sections.searchResultsSection.elements.articleBox,
-        function (result) {
-          for (var i in result.value) {
-            this.elementIdAttribute(result.value[i].ELEMENT, 'id', function (
-              result
-            ) {
-              articles.push(result.value)
-            })
-          }
-          console.log(articles.lenght)
-        }
+        homePage.sections.searchResultsSection.elements.articleBox
       )
-    },*/
+      const articlesCount = Object.keys(articleRows).length
+      console.log('articlesCount')
+      console.log(articlesCount)
+      return articlesCount
+    },
 
     getArticleInfo: async function (articleNumber) {
       const articleItem = `div.st-results-container > article:nth-child(${articleNumber}) a`

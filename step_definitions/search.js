@@ -30,17 +30,19 @@ Then(/^I should see the first page of the search results$/, async () => {
 Then(
   /^The number of results should be at most "(.*)"$/,
   async (maxNumberOfResults) => {
-    const maxNumberOfResultsDisplayed = await helpers.asyncGetText.call(
+    // verify the number of Articles Boxes displayed after search
+    let maxNumberOfResultsInt = parseInt(maxNumberOfResults)
+    let searchResultsArticlesCount = await homePage.getNumberOfArticles()
+    client.assert.ok(searchResultsArticlesCount <= maxNumberOfResultsInt)
+
+    // verify the max number of search results Text displayed
+    const maxResultsPerPageTextDisplayed = await helpers.asyncGetText.call(
       client,
       homePage.section.searchResultsSection.elements.maxResultsPerPage
     )
-    // return client.assert.equal(maxNumberOfResultsDisplayed, maxNumberOfResults)
-    let maxNumberOfResultsDisplayedInt = parseInt(maxNumberOfResultsDisplayed)
-    let maxNumberOfResultsInt = parseInt(maxNumberOfResults)
-    //homePage.getNumberOfSearchResultsArticles()
-    return client.assert.ok(
-      maxNumberOfResultsDisplayedInt <= maxNumberOfResultsInt
-    )
+    let maxResultsPerPageDisplayed = parseInt(maxResultsPerPageTextDisplayed)
+    let maxNumberOfResultsAllowed = parseInt(maxNumberOfResults)
+    client.assert.ok(maxResultsPerPageDisplayed <= maxNumberOfResultsAllowed)
   }
 )
 
@@ -57,6 +59,7 @@ When(
   /^I click on "(.*)" article from the search results$/,
   async (articleNr) => {
     await homePage.acceptCookiePolicy()
+    await homePage.getNumberOfArticlesDisplayed()
     await homePage.openArticle(articleNr)
     return client
   }
