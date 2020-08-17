@@ -6,7 +6,6 @@ const homePage = require('../pages/home')
 const articleDetailsPage = require('../pages/article_details')
 const articleDetails = require('../pages/article_details_object')
 const home = require('../pages/home')
-// const articleIndex = '6'
 
 Given(/^I go to pearson.com main page$/, async () => {
   return await navPage.navigateToMainPage()
