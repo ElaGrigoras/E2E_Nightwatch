@@ -34,6 +34,6 @@ module.exports = {
   test_settings: ENVIRONMENTS,
   screenshots: {
     enabled: true,
-    path: 'screenshots'
-  }
+    path: 'screenshots',
+  },
 }

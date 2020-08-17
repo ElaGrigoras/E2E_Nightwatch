@@ -1,5 +1,5 @@
-# npm run cucumber -- features/search.feature
-# npm run cucumber -- features/search.feature --env staging
+# npm run cucumber -- features/search/search.feature
+# npm run cucumber -- features/search/search.feature --env staging
 
 @search
 Feature: Search functionality on pearson.com
