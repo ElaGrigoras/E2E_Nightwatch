@@ -1,0 +1,40 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cucumberautocomplete.steps": "step_definitions/**/*.js",
+  "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+  // "cucumberautocomplete.stepsInvariants": true,
+  /* "cucumberautocomplete.customParameters": [
+    {
+      "parameter": "{ab}",
+      "value": "(a|b)"
+    },
+    {
+      "parameter":/\{a.*\
+      }/,
+      "value": "a"
+    },
+  ],*/
+  // "cucumberautocomplete.skipDocStringsFormat": true,
+  /*"cucumberautocomplete.formatConfOverride": {
+    "And": 3,
+    "But": "relative"
+  },*/
+  // "cucumberautocomplete.onTypeFormat": true,
+  /*"cucumberautocomplete.pages": {
+    "yourAccount": "pages/onboarding/yourAccount.js",
+    "businessProfile": "pages/onboarding/businessProfile.js",
+    "merchantRate": "pages/onboarding/merchantRates.js",
+    "bankInfo": "pages/onboarding/bankInfo.js",
+    "taxInfo": "pages/onboarding/taxInfo.js"
+  },*/
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  },
+  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+  "eslint.alwaysShowStatus": true
+  // "cucumberautocomplete.stepRegExSymbol": "'"
+}
