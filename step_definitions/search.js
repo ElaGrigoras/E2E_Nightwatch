@@ -22,6 +22,7 @@ Given(/^I search by "(.*)"$/, async (searchTerm) => {
 })
 
 Then(/^I should see the "(.*)" page of the search results$/, async (page) => {
+  // this logic cand be moved under pages
   switch (page) {
     case 'first':
       await client.assert.visible(homePage.section.searchResultsSection)

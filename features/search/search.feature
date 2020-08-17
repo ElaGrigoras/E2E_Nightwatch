@@ -1,5 +1,7 @@
+# run this feature file using one the commends below:
 # npm run cucumber -- features/search/search.feature
 # npm run cucumber -- features/search/search.feature --env staging
+
 
 @search
 Feature: Search functionality on pearson.com
@@ -37,7 +39,7 @@ Feature: Search functionality on pearson.com
             | "fourth"      |
 
 
-
+# I've followed the requirments, but in a real project these steps can be updated to be more generic and to test more scenarios.
 
 
 

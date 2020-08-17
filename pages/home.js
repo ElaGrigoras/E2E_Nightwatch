@@ -71,6 +71,7 @@ const homePage = {
       await client.click(
         homePage.sections.searchResultsSection.elements.nextBtn
       )
+      client.pause(500)
     },
 
     acceptCookiePolicy: async function () {
@@ -129,6 +130,7 @@ const homePage = {
     },
 
     openArticle: async function (articleNr) {
+      // this can be improved to void dupe code
       switch (articleNr) {
         case 'second':
           await this.getArticleInfo('4')
