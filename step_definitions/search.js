@@ -6,7 +6,6 @@ const homePage = require('../pages/home')
 const articleDetailsPage = require('../pages/article_details')
 const articleDetails = require('../pages/article_details_object')
 const home = require('../pages/home')
-// const articleIndex = '6'
 
 Given(/^I go to pearson.com main page$/, async () => {
   return await navPage.navigateToMainPage()
@@ -23,6 +22,7 @@ Given(/^I search by "(.*)"$/, async (searchTerm) => {
 })
 
 Then(/^I should see the "(.*)" page of the search results$/, async (page) => {
+  // this logic cand be moved under pages
   switch (page) {
     case 'first':
       await client.assert.visible(homePage.section.searchResultsSection)
