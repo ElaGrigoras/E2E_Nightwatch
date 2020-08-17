@@ -65,6 +65,9 @@ const homePage = {
     },
 
     goToNextPage: async function () {
+      await client.waitForElementVisible(
+        homePage.sections.searchResultsSection.elements.nextBtn
+      )
       await client.click(
         homePage.sections.searchResultsSection.elements.nextBtn
       )
