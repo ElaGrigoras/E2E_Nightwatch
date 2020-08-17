@@ -16,7 +16,7 @@ Feature: Login to application
         When I fill "login" with <login>
         And I fill "password" with <correct-password>
         And I click "Login" button
-        Then I should be redirected to Dashboard
+        Then I am redirected to Dashboard
         Examples:
             | login  | correct-password |
             | Luke   | ,Temp2Now!       |
@@ -36,14 +36,14 @@ Feature: Login to application
             |        |                    |
 
     Scenario: 4. Unactivated account
-        When I fill "login" with <login>
+        When I fill "login" with <unactivated-login>
         And I fill "password" with <correct-password>
         And I click "Login" button
         Then I am informd to activate my account
         Examples:
-            | login | correct-password |
-            | Sue   | ,Temp4Now!       |
-            | John  | ,Temp4Now!       |
+            | unactivated-login | correct-password |
+            | Sue               | ,Temp4Now!       |
+            | John              | ,Temp4Now!       |
 
     Scenario: 5. Maximum number of unsuccessful login attempts
         When I fill "login" with <login>
@@ -58,10 +58,13 @@ Feature: Login to application
 
     Scenario: 6. Login with the new password after changing it
         And I change the password using the Forgot Password link
-        When I login using the updated password
-        Then I should be redirected to Dashboard
+        When I fill "login" with <login>
+        And I fill "password" with <updated-password>
+        Then I am redirected to Dashboard
 
-
+        Examples:
+            | login | updated-password |
+            | Luke  | ,Updated4Now!    |
 
 
 
